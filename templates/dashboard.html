@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block extra_css %}
+
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+
+{% endblock %}
+
+{% block content %}
+
+<div id="msg_2">
+    <h3 id="msg_1">TASK MANAGER</h3>
+    <a class="hyper" href="/display/" >Display all task</a>
+    <a class="hyper" href="/add/" > Add task</a>
+    <a style="background-color:yellow;color:black" class="hyper" href="/logout/" > LOGOUT</a>
+</div>
+{% if display %}
+<div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Task Date</th>
+      <th scope="col">NAME</th>
+      <th scope="col">DEPARTMENT</th>
+      <th scope="col">TASK</th>
+      <th scope="col">STATUS</th>
+
+    </tr>
+  </thead>
+    {% for i in tasks %}
+  <tbody>
+    <tr>
+      <td>{{ i.id }}</td>
+      <td>{{ i.task_created }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.dept }}</td>
+      <td>{{ i.task }}</td>
+      <td>{{ i.status }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endif %}
+
+{% endblock %}
